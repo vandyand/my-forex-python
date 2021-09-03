@@ -1,7 +1,8 @@
 class TradeManager():
-    def __init__(self, api, log=None):
+    def __init__(self, api, ea_params, log=None):
         self.api = api
         self.log = log
+        self.ea_params = ea_params
 
     def log_message(self, msg):
         if self.log is not None:

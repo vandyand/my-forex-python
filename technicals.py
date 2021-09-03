@@ -4,8 +4,8 @@ from constants import BUY, SELL, NONE
 
 
 class Technicals():
-    def __init__(self, settings, api, pair, granularity, log=None):
-        self.settings = settings
+    def __init__(self, ea_params, api, pair, granularity, log=None):
+        self.ea_params = ea_params
         self.log = log
         self.api = api
         self.pair = pair
@@ -41,11 +41,11 @@ class Technicals():
         short_prev = 'PREV_SHORT'
         long_prev = 'PREV_LONG'
 
-        short_col = f'MA_{self.settings.short_ma}'
-        long_col = f'MA_{self.settings.long_ma}'
+        short_col = f'MA_{self.ea_params.short_ma}'
+        long_col = f'MA_{self.ea_params.long_ma}'
 
-        df[short_col] = df.mid_c.rolling(window=self.settings.short_ma).mean()
-        df[long_col] = df.mid_c.rolling(window=self.settings.long_ma).mean()
+        df[short_col] = df.mid_c.rolling(window=self.ea_params.short_ma).mean()
+        df[long_col] = df.mid_c.rolling(window=self.ea_params.long_ma).mean()
 
         df[short_prev] = df[short_col].shift(1)
         df[long_prev] = df[long_col].shift(1)
@@ -73,7 +73,7 @@ class Technicals():
 
     def get_trade_decision(self, candle_time):
 
-        max_rows = self.settings.long_ma + 2
+        max_rows = self.ea_params.long_ma + 2
         self.log_message("")
         self.log_message(
             f"get_trade_decision() pair:{self.pair} max_rows:{max_rows}")
