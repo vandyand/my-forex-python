@@ -1,5 +1,6 @@
 import pandas as pd
 import utils
+from constants import CURRENCIES
 
 
 class Instrument():
@@ -52,7 +53,7 @@ class Instrument():
     @classmethod
     def get_pairs_from_string(cls, pair_str):
         existing_pairs = cls.get_instruments_dict().keys()
-        pairs = pair_str.split(",")
+        pairs = pair_str.split(", ")
 
         pair_list = []
         for p1 in pairs:
@@ -65,4 +66,4 @@ class Instrument():
 
 
 if __name__ == "__main__":
-    print(Instrument.get_pairs_from_string("GBP,EUR,USD,CAD,JPY,NZD,CHF,AUD"))
+    print(Instrument.get_pairs_from_string(CURRENCIES))
