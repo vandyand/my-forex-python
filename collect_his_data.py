@@ -4,9 +4,7 @@ import datetime as dt
 from instrument import Instrument
 import utils
 from oanda_api import OandaAPI
-from constants import currencies
-
-INCREMENTS = {'M5': 5, 'H1': 60, 'H4': 240}
+from constants import CURRENCIES, INCREMENTS
 
 
 def get_candles_df(json_response):
@@ -66,9 +64,11 @@ def create_file(pair, granularity, api):
 def run_collection():
     api = OandaAPI()
     for g in INCREMENTS.keys():
-        for i in Instrument.get_pairs_from_string(currencies):
+        for i in Instrument.get_pairs_from_string(CURRENCIES):
             create_file(i, g, api)
 
 
 if __name__ == "__main__":
-    run_collection()
+    # print("hello world")
+    print(Instrument.get_pairs_from_string(CURRENCIES))
+    #run_collection()

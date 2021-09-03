@@ -1,5 +1,6 @@
 from dateutil.parser import parse
 
+
 class OandaTrade():
     def __init__(self, oanda_ob):
         self.unrealizedPL = float(oanda_ob['unrealizedPL'])
@@ -14,5 +15,3 @@ class OandaTrade():
     @classmethod
     def TradeFromAPI(cls, api_object):
         return OandaTrade(api_object)
-
-    
