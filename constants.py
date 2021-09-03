@@ -1,3 +1,7 @@
 CURRENCIES = "USD, EUR, JPY, AUD, GPB, CHF, NZD, CAD"
 
 INCREMENTS = {'M5': 5, 'H1': 60, 'H4': 240}
+
+BUY = 1
+SELL = -1
+NONE = 0
